@@ -1,0 +1,7 @@
+{
+  "name": "SYGFR - Gestion de Flotte et Logistique",
+  "description": "Système de Gestion de Flotte et de Ressources (SYGFR) pour le pilotage centralisé des actifs, des chauffeurs et l'optimisation des flux logistiques.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
