@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const FleetManagement: React.FC = () => {
@@ -14,7 +13,7 @@ const FleetManagement: React.FC = () => {
       volume: '80 m³',
       fuel: 'HVO',
       loc: 'Lyon, FR',
-      img: 'https://images.unsplash.com/photo-1591768793355-74d04bb66ea4?q=80&w=800&auto=format&fit=crop',
+      img: 'https://images.unsplash.com/photo-1606148695344-70bc3ad7742b?q=80&w=1000&auto=format&fit=crop',
       status: 'active',
       insurance: 'valide',
       techControl: 'warning'
@@ -28,7 +27,7 @@ const FleetManagement: React.FC = () => {
       volume: '15 m³',
       fuel: 'Élec.',
       loc: 'Paris, FR',
-      img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop',
+      img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1000&auto=format&fit=crop',
       status: 'available',
       insurance: 'valide',
       techControl: 'valide'
@@ -42,7 +41,7 @@ const FleetManagement: React.FC = () => {
         volume: '90 m³',
         fuel: 'GNL',
         loc: 'Atelier',
-        img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&auto=format&fit=crop',
+        img: 'https://images.unsplash.com/photo-1586191582151-f73901625906?q=80&w=1000&auto=format&fit=crop',
         status: 'maintenance',
         insurance: 'expired',
         techControl: 'valide'
@@ -107,8 +106,9 @@ const FleetManagement: React.FC = () => {
                 src={v.img} 
                 alt={v.name} 
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Image+Non+Disponible';
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1586191582151-f73901625906?q=80&w=800&auto=format&fit=crop';
                 }}
               />
               <div className="absolute top-4 left-4 flex gap-2">
