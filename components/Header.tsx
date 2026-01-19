@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -15,7 +14,6 @@ const Header: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
@@ -25,16 +23,15 @@ const Header: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-3 text-primary group">
-            <div className="size-9 bg-primary text-white rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined text-[24px]">local_shipping</span>
+            <div className="size-10 bg-primary text-white rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
+              <span className="material-symbols-outlined text-[26px]">truck_tag</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-lg tracking-tighter text-slate-900 dark:text-white uppercase leading-none">SYGFR</span>
+              <span className="font-black text-xl tracking-tighter text-slate-900 dark:text-white uppercase leading-none">SYGFR</span>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-tight">Logistics Hub</span>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
@@ -48,9 +45,6 @@ const Header: React.FC = () => {
               >
                 <span className="material-symbols-outlined text-[18px] opacity-70">{link.icon}</span>
                 {link.name}
-                {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
-                )}
               </Link>
             ))}
           </nav>
@@ -59,13 +53,7 @@ const Header: React.FC = () => {
             <button className="hidden sm:flex p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
               <span className="material-symbols-outlined text-[22px]">search</span>
             </button>
-            <button className="relative p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-              <span className="material-symbols-outlined text-[22px]">notifications</span>
-              <span className="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
-            </button>
             
-            <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block"></div>
-
             <Link to="/login" className="flex items-center gap-3 pl-1 pr-1 sm:pr-2 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
               <div className="size-9 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden ring-2 ring-white dark:ring-slate-800">
                 <img
@@ -74,7 +62,6 @@ const Header: React.FC = () => {
                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                 />
               </div>
-              <span className="hidden lg:block text-sm font-bold text-slate-700 dark:text-slate-200">B. Lefebvre</span>
             </Link>
 
             <button 
@@ -85,26 +72,6 @@ const Header: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Nav Drawer */}
-      <div className={`fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[-1] transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setMobileMenuOpen(false)}></div>
-      <div className={`fixed top-[64px] left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 space-y-2 z-50 md:hidden transition-all duration-300 ease-out transform ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        {navLinks.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-colors ${
-              isActive(link.path)
-                ? 'bg-primary/10 text-primary font-bold'
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-            }`}
-          >
-            <span className="material-symbols-outlined">{link.icon}</span>
-            <span className="text-base">{link.name}</span>
-            {isActive(link.path) && <span className="ml-auto material-symbols-outlined text-[18px]">check</span>}
-          </Link>
-        ))}
       </div>
     </header>
   );

@@ -21,6 +21,7 @@ const App: React.FC = () => {
           <Route path="fleet" element={<FleetManagement />} />
           <Route path="import" element={<ImportShipments />} />
           <Route path="planning" element={<Planning />} />
+          <Route path="*" element={<Navigate to="/fleet" replace />} />
         </Route>
       </Routes>
     </HashRouter>
