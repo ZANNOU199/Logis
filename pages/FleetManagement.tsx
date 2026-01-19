@@ -14,7 +14,7 @@ const FleetManagement: React.FC = () => {
       volume: '80 m³',
       fuel: 'HVO',
       loc: 'Lyon, FR',
-      img: 'https://images.unsplash.com/photo-1586191582056-97302488661d?auto=format&fit=crop&q=80&w=400',
+      img: 'https://images.unsplash.com/photo-1591768793355-74d04bb66ea4?q=80&w=800&auto=format&fit=crop',
       status: 'active',
       insurance: 'valide',
       techControl: 'warning'
@@ -28,7 +28,7 @@ const FleetManagement: React.FC = () => {
       volume: '15 m³',
       fuel: 'Élec.',
       loc: 'Paris, FR',
-      img: 'https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=400',
+      img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop',
       status: 'available',
       insurance: 'valide',
       techControl: 'valide'
@@ -42,7 +42,7 @@ const FleetManagement: React.FC = () => {
         volume: '90 m³',
         fuel: 'GNL',
         loc: 'Atelier',
-        img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=400',
+        img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&auto=format&fit=crop',
         status: 'maintenance',
         insurance: 'expired',
         techControl: 'valide'
@@ -102,8 +102,15 @@ const FleetManagement: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
         {vehicles.map((v) => (
           <div key={v.id} className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
-            <div className="relative h-48 overflow-hidden bg-slate-100">
-              <img src={v.img} alt={v.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src={v.img} 
+                alt={v.name} 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x400?text=Image+Non+Disponible';
+                }}
+              />
               <div className="absolute top-4 left-4 flex gap-2">
                 <div className="bg-white/90 dark:bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                   {v.type}
@@ -177,7 +184,6 @@ const FleetManagement: React.FC = () => {
         ))}
       </div>
 
-      {/* Stats Quick Look */}
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: 'Utilisation', val: '84%', icon: 'bolt', color: 'text-primary' },
